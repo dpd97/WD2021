@@ -8,8 +8,8 @@ public class TcpManager : MonoBehaviour
     public TCPClient tcp;
     string message;
     public RenderTexture droneCam;
-
-    public string[] msgparts = new string[3];
+    public string[] msgparts = new string[1];
+    public float detectionOutput;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +22,7 @@ public class TcpManager : MonoBehaviour
     void Update()
     {
         tcp.SendTcpImage(droneCam);
+        DecodeMessage();
 
         /*if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -33,9 +34,14 @@ public class TcpManager : MonoBehaviour
     {
         message = tcp.serverMessage;
 
-        /* msgparts = message.Split(',');
+        msgparts = message.Split(',');
 
-        if (msgparts.Length == 3)
+        if (msgparts.Length == 1)
+        {
+            detectionOutput = float.Parse(msgparts[0]);
+        }
+
+        /*if (msgparts.Length == 3)
         {
             theta = float.Parse(msgparts[0]);
             fi = float.Parse(msgparts[1]);

@@ -134,8 +134,8 @@ public class TCPClient : MonoBehaviour
                 //stream.Write(bytes, 0, bytes.Length);
                 stream.Write(data, 0, data.Length);
 
-                Debug.Log("Image sent, length = " + bytes.Length + " together with protocol," +
-                   "total length: " + data.Length);
+                //Debug.Log("Image sent, length = " + bytes.Length + " together with protocol," +
+                 //  "total length: " + data.Length);
 
             }
         }
